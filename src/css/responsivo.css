@@ -12,14 +12,15 @@
 
 .selecao-de-personagens{
     flex-direction: column-reverse;
-    max-width: 230px;
-    margin: auto;
+    max-width: 430px;
+    margin: 0 auto;
 
     }
 
 
 .selecao-de-personagens .personagens{
     margin-top: 37px;
+    
 }
 
 
@@ -27,6 +28,7 @@
 
  .selecao-de-personagens .personagens .titulo{
     font-size: 15px;
+
  }
 
 
