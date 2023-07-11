@@ -11,10 +11,15 @@ personagens.forEach((personagem) => {
     personagem.addEventListener('mouseenter', () => {
 
 
+        if(window.innerWidth < 450){
+            window.scrollTo({top: 0, behavior: 'smooth' });
+
+        }
+
+
         //Passo 3 - verificar e já  exista um personagem elecionado, se sim, devemos remover a seleção dele
 
-        const personagemSelecionado = document.querySelector('.selecionado');
-        personagemSelecionado.classList.remove('selecionado')
+        removerSelecaodoPersonagem();
 
 
 
@@ -27,22 +32,15 @@ personagens.forEach((personagem) => {
         // Passo 1 - Pegar o elemento do personagem grande para adicionar as informações nele
 
 
-        const imagemPersonagemGrande = document.querySelector('.personagem-selecionado');
-
-        // Passo 2 - Alterar  a imagem  do personagem grande
-        const idPersonagem = personagem.attributes.id.value;
-        imagemPersonagemGrande.src = `/src/imagens/card-${idPersonagem}.png`;
+        alterarImagemPersonagemSelecionado(personagem);
 
         //Passo 3 - Alterar o nome do personagem grande
 
-        const nomePersonagem = document.getElementById('nome-personagem');
-
-        nomePersonagem.innerText = personagem.getAttribute('data-name');
+        alterarNomedoPersonagemSelecionado(personagem);
 
         //Passo 4 - Alterar a descrição do personagem grande
         
-        const descricaoPersonagem = document.getElementById('descricao-personagem');
-        descricaoPersonagem.innerText = personagem.getAttribute('data-description');
+        alterarDescricaoPersonagem(personagem);
 
 
 
@@ -51,4 +49,28 @@ personagens.forEach((personagem) => {
 
 
 
+
+function alterarDescricaoPersonagem(personagem) {
+    const descricaoPersonagem = document.getElementById('descricao-personagem');
+    descricaoPersonagem.innerText = personagem.getAttribute('data-description');
+}
+
+function alterarNomedoPersonagemSelecionado(personagem) {
+    const nomePersonagem = document.getElementById('nome-personagem');
+
+    nomePersonagem.innerText = personagem.getAttribute('data-name');
+}
+
+function removerSelecaodoPersonagem() {
+    const personagemSelecionado = document.querySelector('.selecionado');
+    personagemSelecionado.classList.remove('selecionado');
+}
+
+function alterarImagemPersonagemSelecionado(personagem) {
+    const imagemPersonagemGrande = document.querySelector('.personagem-grande');
+
+    // Passo 2 - Alterar  a imagem  do personagem grande
+    const idPersonagem = personagem.attributes.id.value;
+    imagemPersonagemGrande.src = `/src/imagens/card-${idPersonagem}.png `;
+}
 
